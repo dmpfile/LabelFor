@@ -15,10 +15,10 @@ settings:
   react:
     version: detect
 extends:
-  - eslint: reconmended
-  - plugin: @typescript-eslint/eslint-recommended
-  - plugin: @tylescript-eslint/recommended
-  - plugin: react/recommended
-  - plugin: jest/recommended
+  - eslint:recommended
+  - plugin:@typescript-eslint/eslint-recommended
+  - plugin:@typescript-eslint/recommended
+  - plugin:react/recommended
+  - plugin:jest/recommended
   - prettier
   - prettier/@typescript-eslint
