@@ -1,0 +1,24 @@
+---
+env:
+  es2020: true
+  jest/globals: true
+parser: '@typescript-eslint/parser'
+parserOptions:
+  project: ./tsconfig.json
+  ecmaFeatures:
+    jsx: true
+plugins:
+  - react
+  - jest
+  - '@typescript-eslint'
+settings:
+  react:
+    version: detect
+extends:
+  - eslint: reconmended
+  - plugin: @typescript-eslint/eslint-recommended
+  - plugin: @tylescript-eslint/recommended
+  - plugin: react/recommended
+  - plugin: jest/recommended
+  - prettier
+  - prettier/@typescript-eslint
