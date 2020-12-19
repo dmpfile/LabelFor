@@ -1,0 +1,13 @@
+@import "variables";
+
+.header {
+  &__inner {
+    background-color: $brown;
+    padding: 10px;
+  }
+  &__title {
+    font-size: 22px;
+    font-weight: normal;
+    color: $white;
+  }
+}

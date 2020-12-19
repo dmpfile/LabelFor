@@ -1,0 +1,17 @@
+@import "variables";
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  &__inner {
+    text-align: center;
+    background-color: $brown;
+    padding: 10px;
+  }
+  &__title {
+    font-size: 18px;
+    font-weight: normal;
+    color: $white;
+  }
+}
