@@ -1,0 +1,15 @@
+@import "variables";
+
+.canvas {
+  border: 1px solid $olive;
+  position: absolute;
+  top: 25%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  box-shadow: 10px 15px 8px -3px rgba(0,0,0,0.2);
+  background-color: white;
+  &__inner {
+    position: relative;
+  }
+}
