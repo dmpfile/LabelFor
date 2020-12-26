@@ -16,10 +16,16 @@
   }
   div[class^="canvas_text"] {
     position: absolute;
+    padding: 12px;
+  }
+
+  div[class^="canvas_text"].is-active {
+    border: 3px solid $l-blue;
+    outline: none
   }
 }
 
 input[type="text"] {
-  padding: 8px;
-  border: 3px solid $l-blue
+  border: none;
+  outline: none;
 }
