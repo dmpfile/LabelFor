@@ -8,6 +8,11 @@ const Canvas: React.FC = () => {
   const canvasSize = { width: '50vh', height: '50vh' };
   const [texts, setText] = useState<any>([])
 
+  const generateId = (data: any) => {
+    const ids = data.map((el: any) => el.id)
+    return ids.length ? Math.max(...ids) + 1 : 0
+  }
+
   const addTextElements = (e: React.MouseEvent<HTMLElement>) => {
     const el = e.target as HTMLInputElement;
     const cursor = document.body.style.cursor;
@@ -34,7 +39,7 @@ const Canvas: React.FC = () => {
       setText([
         ...texts,
         {
-          id: texts.length + 1,
+          id: generateId(texts),
           text: 'テキストを入力',
           top,
           left
