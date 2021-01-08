@@ -21,6 +21,9 @@
   &__logo {
     margin: auto;
     width: 50%;
+    :active {
+      width: 95%;
+    }
   }
 }
 
