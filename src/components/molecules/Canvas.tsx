@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useState}  from 'react';
+import { useState, useEffect }  from 'react';
 import '../../scss/canvas.scss';
 import Draggable from 'react-draggable';
 
@@ -54,6 +54,28 @@ const Canvas: React.FC = () => {
       }
     }
   };
+
+  const delTextElement = (e: any) => {
+    const target = document.getElementsByClassName('is-active')[0] as HTMLInputElement;
+    if (e.keyCode === 8) {
+      // contentEditableが「初期値 or false」のとき削除される
+      // contentEditableはBoolean型ではなく文字列
+      if (target && (target.contentEditable === 'inherit' || target.contentEditable === 'false')) {
+        const targetId = Number(target.classList[0].replace('canvas_text', '')) - 1
+        const index = texts.findIndex((el: any) => el.id === targetId)
+        texts.splice(index, 1)
+        setText([...texts])
+      }
+    }
+  }
+
+  // 全要素削除されるのを防ぐ処理
+  useEffect(() => {
+    window.addEventListener('keydown', delTextElement)
+    return () => {
+      window.removeEventListener('keydown', delTextElement)
+    }
+  }, [delTextElement])
 
   return (
     <div className="canvas" style={canvasSize}>
