@@ -82,14 +82,14 @@ const Canvas: React.FC = () => {
       <div className="canvas__inner" onClick={addTextElements}>
         {/* テキスト・画像を追加するとここに要素が追加 */}
         {texts.map((text: any, index: number) => (
-          <Draggable handle=".is-active" key={index} defaultClassName="is-active">
-          <div
-            className={`canvas_text${String(index + 1)}`}
-            key={index}
-            style={{top: text.top, left: text.left}}
-          >
-            {text.text}
-          </div>
+          <Draggable key={index} handle=".is-active" defaultClassName="is-active" bounds="parent">
+            <div
+              className={`canvas_text${String(index + 1)}`}
+              key={index}
+              style={{top: text.top, left: text.left}}
+            >
+              {text.text}
+            </div>
           </Draggable>
         ))}
       </div>
