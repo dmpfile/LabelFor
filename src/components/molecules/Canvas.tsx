@@ -15,14 +15,14 @@ const Canvas: React.FC = () => {
     {
       font: 'Noto Sans JP',
       weights: [400]
-  }
+    }
   ])
   const [modalState, setModalState] = useState<boolean>(false)
 
   const addTextElements = (e: React.MouseEvent<HTMLElement>) => {
     const cursor = document.body.style.cursor;
     const el = e.target as HTMLInputElement; // canvas_inner
-    
+
     if(!el.classList.contains('is-active')) {
       let isFocus = false;
       e.currentTarget.childNodes.forEach((i) => {
@@ -38,11 +38,11 @@ const Canvas: React.FC = () => {
           const newTexts = texts.filter((el: any) => {
             if (el.uuid == targetUUID) {
               el.text = t.innerHTML ? t.innerHTML : '';
-        }
+            }
             return true;
-      })
+          })
           setText([...newTexts])
-      }
+        }
       })
       if (isFocus) return;
     }
@@ -77,14 +77,14 @@ const Canvas: React.FC = () => {
 
   const delTextElement = (e: any) => {
     const target = document.getElementsByClassName('is-active')[0] as HTMLInputElement;
+    const targetUUID = target.dataset.uuid;
     if (e.keyCode === 8) {
-      // contentEditableが「初期値 or false」のとき削除される
-      // contentEditableはBoolean型ではなく文字列
       if (target && (target.contentEditable === 'inherit' || target.contentEditable === 'false')) {
-        const targetId = Number(target.classList[0].replace('canvas_text', '')) - 1
-        const index = texts.findIndex((el: any) => el.id === targetId)
-        texts.splice(index, 1)
-        setText([...texts])
+        // 削除対象を除いた新しい配列を作成
+        const newTexts = texts.filter((el: any) => {
+          return el.uuid !== targetUUID;
+        })
+        setText([...newTexts])
       }
     }
   }
