@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useState, useEffect }  from 'react';
 import '../../scss/canvas.scss';
 import Draggable from 'react-draggable';
+import { v4 as uuidv4 } from 'uuid';
 
 const Canvas: React.FC = () => {
   /* 動的にキャンバスサイズを変える */
@@ -84,9 +85,8 @@ const Canvas: React.FC = () => {
         {texts.map((text: any, index: number) => (
           <Draggable key={index} handle=".is-active" defaultClassName="is-active" bounds="parent">
             <div
-              className={`canvas_text${String(index + 1)}`}
-              key={index}
-              style={{top: text.top, left: text.left}}
+              className={ 'canvas_text' }
+              data-uuid={ text.uuid }
             >
               {text.text}
             </div>
