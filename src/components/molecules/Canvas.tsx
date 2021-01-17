@@ -46,8 +46,11 @@ const Canvas: React.FC = () => {
       setText([
         ...texts,
         {
-          id: generateId(texts),
+          uuid: uuidv4(),
           text: 'テキストを入力',
+          size: '24px',
+          font: 'Noto Sans JP',
+          color: '#000000',
           top,
           left
         }
@@ -96,8 +99,18 @@ const Canvas: React.FC = () => {
             <div
               className={ 'canvas_text' }
               data-uuid={ text.uuid }
+              key={ index }
+              style={
+                {
+                  fontSize: text.size,
+                  color: text.color,
+                  top: text.top,
+                  left: text.left,
+                  fontFamily: text.font
+                }
+              }
             >
-              {text.text}
+              { text.text }
             </div>
           </Draggable>
         ))}
