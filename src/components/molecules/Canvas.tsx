@@ -4,16 +4,18 @@ import '../../scss/canvas.scss';
 import Draggable from 'react-draggable';
 import { v4 as uuidv4 } from 'uuid';
 import EditModal from './EditModal'
+import GoogleFontLoader from 'react-google-font-loader';
 
 const Canvas: React.FC = () => {
   /* 動的にキャンバスサイズを変える */
   const canvasSize = { width: '50vh', height: '50vh' };
   const [texts, setText] = useState<any>([])
-
-  const generateId = (data: any) => {
-    const ids = data.map((el: any) => el.id)
-    return ids.length ? Math.max(...ids) + 1 : 0
+  const [fonts, setFont] = useState<any>([
+    {
+      font: 'Noto Sans JP',
+      weights: [400]
   }
+  ])
   const [modalState, setModalState] = useState<boolean>(false)
 
   const addTextElements = (e: React.MouseEvent<HTMLElement>) => {
@@ -84,6 +86,8 @@ const Canvas: React.FC = () => {
   }, [delTextElement])
 
   return (
+    <>
+    <GoogleFontLoader fonts={fonts} />
     <div className="canvas" style={canvasSize}>
       <div className="canvas__inner" onClick={addTextElements}>
         {/* テキスト・画像を追加するとここに要素が追加 */}
