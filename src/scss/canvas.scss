@@ -1,14 +1,13 @@
 @import "variables";
 
 .canvas {
-  font-size: 24px;
   border: 1px solid $olive;
   position: absolute;
   top: 25%;
   left: 0;
   right: 0;
   margin: auto;
-  box-shadow: 10px 15px 8px -3px rgba(0,0,0,0.2);
+  box-shadow: 10px 15px 8px -3px rgba(0,0,0,0.7);
   background-color: white;
   &__inner {
     height: 100%;
@@ -16,11 +15,11 @@
   }
   div[class^="canvas_text"] {
     position: absolute;
-    padding: 12px;
+    padding: 8px 15px;
   }
 
   div[class^="canvas_text"].is-active {
-    border: 3px solid $l-blue;
+    border: 1px solid $l-blue;
     outline: none
   }
 }
