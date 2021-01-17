@@ -7,11 +7,12 @@
   &__inner {
     text-align: center;
     background-color: $brown;
-    padding: 10px;
+    padding: 5px;
   }
   &__title {
     font-size: 18px;
     font-weight: normal;
     color: $white;
+    letter-spacing: 1px;
   }
 }
