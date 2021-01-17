@@ -1,0 +1,45 @@
+@import "variables";
+
+.editmodal {
+  position: absolute;
+  bottom: 37px;
+  z-index: 10;
+  width: 100%;
+  &__header {
+    color: $white;
+    background-color: $brown;
+    padding: 12px 30px;
+    opacity: .9;
+    letter-spacing: 3px;
+  }
+  &__inner {
+    color: $white;
+    padding: 20px 0px 100px 10px;
+    background-color: $olive;
+    opacity: .6;
+    ul {
+      padding: 0 20px;
+    }
+    li {
+      font-size: 22px;
+      list-style: none;
+      margin: 20px 0;
+    }
+    input {
+      font-size: 16px;
+      display: block;
+    }
+  }
+  &__select {
+    width: 40%;
+  }
+  &__btn {
+    margin: 20px 20px 20px 0;
+    padding: 10px 70px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    letter-spacing: 5px;
+    box-shadow: 4px 6px;
+  }
+}

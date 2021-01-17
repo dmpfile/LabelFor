@@ -3,6 +3,7 @@ import { useState, useEffect }  from 'react';
 import '../../scss/canvas.scss';
 import Draggable from 'react-draggable';
 import { v4 as uuidv4 } from 'uuid';
+import EditModal from './EditModal'
 
 const Canvas: React.FC = () => {
   /* 動的にキャンバスサイズを変える */
@@ -13,6 +14,7 @@ const Canvas: React.FC = () => {
     const ids = data.map((el: any) => el.id)
     return ids.length ? Math.max(...ids) + 1 : 0
   }
+  const [modalState, setModalState] = useState<boolean>(false)
 
   const addTextElements = (e: React.MouseEvent<HTMLElement>) => {
     const el = e.target as HTMLInputElement;
@@ -26,7 +28,9 @@ const Canvas: React.FC = () => {
         if (t.classList.contains('is-active')) {
           t.className = t.className.replace(' is-active', '')
           t.contentEditable = 'false'
-          flg = true
+          isFocus = true;
+          setModalState(false)
+
         }
       })
       if (flg) {
@@ -50,6 +54,7 @@ const Canvas: React.FC = () => {
       if(!el.classList.contains('is-active')) {
         el.className += ' is-active'
       } else {
+        setModalState(true)
         el.contentEditable = 'true'
         el.focus()
       }
@@ -94,6 +99,8 @@ const Canvas: React.FC = () => {
         ))}
       </div>
     </div>
+    { modalState ? <EditModal current={currentTexts} texts={texts} setText={setText} fonts={fonts} setFont={setFont} setModalState={setModalState}/> : null }
+    </>
   )
 }
 
