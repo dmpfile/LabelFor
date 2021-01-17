@@ -9,13 +9,13 @@ import Canvas from './components/molecules/Canvas';
 import Footer from './components/molecules/Footer';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <>
     <Header></Header>
     <div className="container">
       <EditNav></EditNav>
       <Canvas></Canvas>
     </div>
     <Footer></Footer>
-  </React.StrictMode>,
+  </>,
   document.getElementById('root')
 );
