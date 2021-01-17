@@ -19,12 +19,11 @@ const Canvas: React.FC = () => {
   const [modalState, setModalState] = useState<boolean>(false)
 
   const addTextElements = (e: React.MouseEvent<HTMLElement>) => {
-    const el = e.target as HTMLInputElement;
     const cursor = document.body.style.cursor;
+    const el = e.target as HTMLInputElement; // canvas_inner
     
-    // canvas__innerにis-activeクラスがあれば削除して処理終了
     if(!el.classList.contains('is-active')) {
-      let flg;
+      let isFocus = false;
       e.currentTarget.childNodes.forEach((i) => {
         const t = (i as HTMLElement)
         if (t.classList.contains('is-active')) {
@@ -33,13 +32,20 @@ const Canvas: React.FC = () => {
           isFocus = true;
           setModalState(false)
 
+          // テキスト配列情報書き換え
+          const targetUUID = t.dataset.uuid;
+          const newTexts = texts.filter((el: any) => {
+            if (el.uuid == targetUUID) {
+              el.text = t.innerHTML ? t.innerHTML : '';
         }
+            return true;
       })
-      if (flg) {
-        return true
+          setText([...newTexts])
       }
+      })
+      if (isFocus) return;
     }
-    // テキスト追加 or 編集
+
     if (cursor === 'text' && el.className === 'canvas__inner') {
       const left = `${String(e.nativeEvent.offsetX)}px`
       const top = `${String(e.nativeEvent.offsetY)}px`
