@@ -10,6 +10,7 @@ const Canvas: React.FC = () => {
   /* 動的にキャンバスサイズを変える */
   const canvasSize = { width: '50vh', height: '50vh' };
   const [texts, setText] = useState<any>([])
+  const [currentTexts, setCurrentText] = useState<any>({})
   const [fonts, setFont] = useState<any>([
     {
       font: 'Noto Sans JP',
@@ -65,6 +66,8 @@ const Canvas: React.FC = () => {
       if(!el.classList.contains('is-active')) {
         el.className += ' is-active'
       } else {
+        const i = texts.findIndex((e: any) => e.uuid === el.dataset.uuid);
+        setCurrentText(texts[i]);
         setModalState(true)
         el.contentEditable = 'true'
         el.focus()
