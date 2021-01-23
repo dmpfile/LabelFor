@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../scss/editnav.scss';
 import { ReactComponent as Text} from '../../assets/text.svg';
-import { ReactComponent as Image} from '../../assets/image.svg';
+import { ReactComponent as Printer} from '../../assets/printer.svg';
 
 const EditNav: React.FC = () => {
   const changeCursor = (e: React.MouseEvent<HTMLElement>) => {
@@ -9,12 +9,16 @@ const EditNav: React.FC = () => {
     document.body.style.cursor = type === 'text' ? 'text': '';
   }
 
+  const printCanvas = () => {
+    window.print()
+  }
+
   return (
     <div className="editnav">
       <div className="editnav__inner">
         <ul>
           <li>テキスト<div className="editnav__logo" onClick={changeCursor} data-item={'text'}><Text/></div></li>
-          <li>画像<div className="editnav__logo" onClick={changeCursor}><Image/></div></li>
+          <li>印刷<div className="editnav__logo" onClick={printCanvas}><Printer/></div></li>
         </ul>
       </div>
     </div>
