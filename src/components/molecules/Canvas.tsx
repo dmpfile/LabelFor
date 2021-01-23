@@ -55,7 +55,7 @@ const Canvas: React.FC = () => {
         {
           uuid: uuidv4(),
           text: 'テキストを入力',
-          size: '24px',
+          size: '24',
           font: 'Noto Sans JP',
           color: '#000000',
           top,
@@ -77,8 +77,8 @@ const Canvas: React.FC = () => {
 
   const delTextElement = (e: any) => {
     const target = document.getElementsByClassName('is-active')[0] as HTMLInputElement;
-    const targetUUID = target.dataset.uuid;
     if (e.keyCode === 8) {
+      const targetUUID = target.dataset.uuid;
       if (target && (target.contentEditable === 'inherit' || target.contentEditable === 'false')) {
         // 削除対象を除いた新しい配列を作成
         const newTexts = texts.filter((el: any) => {
@@ -111,7 +111,7 @@ const Canvas: React.FC = () => {
               key={ index }
               style={
                 {
-                  fontSize: text.size,
+                  fontSize: text.size + 'px',
                   color: text.color,
                   top: text.top,
                   left: text.left,

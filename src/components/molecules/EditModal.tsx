@@ -110,10 +110,20 @@ const EditModal: React.FC<Props> = (props: Props) => {
       <h2 className="editmodal__header">テキスト編集</h2>
       <div className="editmodal__inner">
         <ul>
-          <li className="editmodal__text">テキスト<input type="text" defaultValue={current.text} onChange={e => handleOnChange(e, 'text')}/></li>
-          <li className="editmodal__size">サイズ<input type="text" defaultValue={current.size} onChange={e => handleOnChange(e, 'size')}/></li>
-          <li className="editmodal__color">カラー<input type="color" defaultValue={current.color} onChange={e => handleOnChange(e, 'color')}/></li>
-          <li className="editmodal__font">フォント
+          <li className="editmodal__text">
+            <div>テキスト</div>
+            <input type="text" defaultValue={current.text} onChange={e => handleOnChange(e, 'text')}/>
+          </li>
+          <li className="editmodal__size">
+            <div>サイズ</div>
+            <input type="text" defaultValue={current.size} onChange={e => handleOnChange(e, 'size')}/><span>px</span>
+          </li>
+          <li className="editmodal__color">
+            <div>カラー</div>
+            <input type="color" defaultValue={current.color} onChange={e => handleOnChange(e, 'color')}/>
+          </li>
+          <li className="editmodal__font">
+            <div>フォント</div>
             <div className="editmodal__select">
               <Select
                 styles={customStyles}
