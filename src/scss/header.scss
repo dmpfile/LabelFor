@@ -6,9 +6,19 @@
     padding: 12px 15px 15px;
   }
   &__title {
+    position: relative;
     font-size: 26px;
     font-weight: normal;
     color: $white;
     letter-spacing: 4px;
+  }
+  &__logo {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    svg {
+      margin: 0 10px;
+      fill: $white;
+    }
   }
 }
