@@ -81,9 +81,9 @@ const Canvas: React.FC<Props> = (props: Props) => {
 
   const delTextElement = (e: any) => {
     const target = document.getElementsByClassName('is-active')[0] as HTMLInputElement;
-    if (e.keyCode === 8) {
+    if (!!target && e.keyCode === 8) {
       const targetUUID = target.dataset.uuid;
-      if (target && (target.contentEditable === 'inherit' || target.contentEditable === 'false')) {
+      if (target.contentEditable === 'inherit' || target.contentEditable === 'false') {
         // 削除対象を除いた新しい配列を作成
         const newTexts = texts.filter((el: any) => {
           return el.uuid !== targetUUID;
