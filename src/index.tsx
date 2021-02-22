@@ -1,5 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { useState }  from 'react';
+import { render } from 'react-dom';
 import './scss/reset.scss';
 import './scss/index.scss';
 
@@ -8,14 +9,22 @@ import EditNav from './components/molecules/EditNav';
 import Canvas from './components/molecules/Canvas';
 import Footer from './components/molecules/Footer';
 
-ReactDOM.render(
-  <>
-    <Header></Header>
-    <div className="container">
-      <EditNav></EditNav>
-      <Canvas></Canvas>
-    </div>
-    <Footer></Footer>
-  </>,
+const App: React.FC = () => {
+  const [canvasSize, setCanvasSize] = useState<any>({ width: '700px', height: '700px'})
+
+  return(
+    <>
+      <Header canvasSize={canvasSize} setCanvasSize={setCanvasSize}></Header>
+      <div className="container">
+        <EditNav></EditNav>
+        <Canvas canvasSize={canvasSize}></Canvas>
+      </div>
+      <Footer></Footer>
+    </>
+  );
+}
+
+render (
+  <App/>,
   document.getElementById('root')
-);
+)

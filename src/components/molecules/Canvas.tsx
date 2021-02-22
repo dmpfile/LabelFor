@@ -6,9 +6,13 @@ import { v4 as uuidv4 } from 'uuid';
 import EditModal from './EditModal'
 import GoogleFontLoader from 'react-google-font-loader';
 
-const Canvas: React.FC = () => {
+type Props = {
+  canvasSize: any
+}
+
+const Canvas: React.FC<Props> = (props: Props) => {
   /* 動的にキャンバスサイズを変える */
-  const canvasSize = { width: '50vh', height: '50vh' };
+  const canvasSize = props.canvasSize;
   const [texts, setText] = useState<any>([])
   const [currentTexts, setCurrentText] = useState<any>({})
   const [fonts, setFont] = useState<any>([

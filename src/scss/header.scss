@@ -12,6 +12,39 @@
     color: $white;
     letter-spacing: 4px;
   }
+  &__canvas {
+    display: inline;
+    position: absolute;
+    top: 1.2%;
+    right: 130px;
+    > span {
+      color: $white;
+    }
+    input[type="number"] {
+      color: $white;
+      background: none;
+      border: solid $white;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-size: 20px;
+      padding: 0 0 1px 21px;
+      margin: 0 10px;
+      outline: none;
+      width: 90px;
+      text-align: center;
+    }
+    &--w {
+      position: absolute;
+      top: 10%;
+      left: 7%;
+    }
+    &--h {
+      position: absolute;
+      top: 10%;
+      left: 62%;
+    }
+  }
   &__logo {
     position: absolute;
     top: 2%;
