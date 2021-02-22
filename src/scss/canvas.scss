@@ -1,7 +1,6 @@
 @import "variables";
 
 .canvas {
-  border: 1px solid $olive;
   position: absolute;
   top: 15%;
   left: 0;
@@ -30,10 +29,14 @@ input[type="text"] {
 }
 
 @media print {
+  body {
+    background-color: white;
+  }
   .header, .footer, .editnav {
     visibility: hidden;
   }
   .canvas {
+    border: 1px solid $olive;
     box-shadow: none;
     // 選択中要素の枠削除
     div[class^="canvas_text"].is-active {

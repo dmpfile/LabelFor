@@ -1,6 +1,9 @@
+@import "variables";
+
 body {
   font-family: "Noto Sans JP" , "游ゴシック", sans-serif;
   position: relative;
+  background-color: rgba($olive, 0.3);
 }
 
 .container {
