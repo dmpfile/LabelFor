@@ -18,6 +18,8 @@
   }
 
   div[class^="canvas_text"].is-active {
+    z-index: 10;
+    background-color: white;
     border: 1px solid $l-blue;
     outline: none
   }

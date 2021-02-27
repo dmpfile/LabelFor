@@ -101,10 +101,76 @@ const Canvas: React.FC<Props> = (props: Props) => {
     }
   }, [delTextElement])
 
+  let isDraggable = false
+  const snapTextElement = (event: any) => {
+    if (event.type === "mousedown") {
+      isDraggable = true
+    } else if (event.type === "mouseup") {
+      isDraggable = false
+      document.querySelector('.h-line')?.remove()
+      document.querySelector('.v-line')?.remove()
+    } else {
+      if (!isDraggable) return;
+
+      // canvasサイズ取得
+      const cWidth = Number(canvasSize.width.replace('px', ''))
+      const cHeight = Number(canvasSize.height.replace('px', ''))
+
+      // .is-active要素の中心座標を取得
+      const canvas = document.querySelector(".canvas__inner") as HTMLElement
+      const activeElement = document.querySelector(".is-active") as HTMLElement
+
+      const parent = canvas?.getBoundingClientRect()
+      const child = activeElement?.getBoundingClientRect()
+      
+      const childWidth = Math.ceil(activeElement?.offsetWidth / 2)
+      const childHeight = Math.ceil(activeElement?.offsetHeight / 2)
+      
+      const eXCenter = child?.left - parent?.left + childWidth
+      const eYCenter = child?.top - parent?.top + childHeight
+      
+      // スナップ要素作成
+      const vSnap = document.createElement("span")
+      const hSnap = document.createElement("span")
+
+      vSnap.className = 'v-line'
+      hSnap.className = 'h-line'
+
+      vSnap.style.position = "absolute"
+      hSnap.style.position = "absolute"
+
+      vSnap.style.backgroundColor = '#208AAE'
+      hSnap.style.backgroundColor = '#208AAE'
+      
+      vSnap.style.width = '2px' 
+      vSnap.style.height = `${cHeight}px`
+      vSnap.style.top = `0px`
+      vSnap.style.left = `${cWidth ? cWidth / 2 : ""}px`
+
+      hSnap.style.width = `${cWidth}px`
+      hSnap.style.height = '2px'
+      hSnap.style.top = `${cHeight ? cHeight / 2 : ""}px`
+
+      // スナップ要素追加・削除
+      if ((cWidth / 2) === eXCenter && !document.querySelector('.v-line')) {
+        canvas.insertAdjacentElement("beforeend", vSnap)
+      } else {
+        document.querySelector('.v-line')?.remove()
+      }
+
+      if ((cHeight / 2) === eYCenter && !document.querySelector('.h-line')) {
+        canvas.insertAdjacentElement("beforeend", hSnap)
+      } else {
+        document.querySelector('.h-line')?.remove()
+      }
+    }
+    
+  }
+
   return (
     <>
     <GoogleFontLoader fonts={fonts} />
-    <div className="canvas" style={canvasSize}>
+    <div className="canvas" style={canvasSize} onMouseDown={snapTextElement} onMouseMove={snapTextElement} onMouseUp={snapTextElement}>
       <div className="canvas__inner" onClick={addTextElements}>
         {/* テキスト・画像を追加するとここに要素が追加 */}
         {texts.map((text: any, index: number) => (
