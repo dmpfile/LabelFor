@@ -22,6 +22,9 @@ const Canvas: React.FC<Props> = (props: Props) => {
     }
   ])
   const [modalState, setModalState] = useState<boolean>(false)
+  const openModal = () => {
+    setModalState(true)
+  }
 
   const addTextElements = (e: React.MouseEvent<HTMLElement>) => {
     const cursor = document.body.style.cursor;
@@ -72,7 +75,6 @@ const Canvas: React.FC<Props> = (props: Props) => {
       } else {
         const i = texts.findIndex((e: any) => e.uuid === el.dataset.uuid);
         setCurrentText(texts[i]);
-        setModalState(true)
         el.contentEditable = 'true'
         el.focus()
       }
@@ -179,6 +181,7 @@ const Canvas: React.FC<Props> = (props: Props) => {
               className={ 'canvas_text' }
               data-uuid={ text.uuid }
               key={ index }
+              onDoubleClick={openModal}
               style={
                 {
                   fontSize: text.size + 'px',
