@@ -6,11 +6,13 @@ import { ReactComponent as Twitter} from '../../assets/twitter.svg';
 type Props = {
   canvasSize: any
   setCanvasSize: any
+  setFileName: any
 }
 
 const Header: React.FC<Props> = (props: Props) => {
   const SIZES = props.canvasSize;
   const setCanvasSize = props.setCanvasSize;
+  const setFileName = props.setFileName;
 
   const handleSizeChange = (e: any, line: string) => {
     e as HTMLElement;
@@ -26,10 +28,18 @@ const Header: React.FC<Props> = (props: Props) => {
     }
   }
 
+  const handleFileNameChange = (e: any) => {
+    setFileName(e.target.value)
+  }
+
   return (
     <header className="header">
       <div className="header__inner">
         <h1 className="header__title">Label for</h1>
+        <div className="header__filename">
+          <input type="text" onChange={e => handleFileNameChange(e)} defaultValue="untitled" placeholder="untitled"/>
+          <span>.png</span>
+        </div>
         <div className="header__canvas">
           <span className="header__canvas--w">w</span>
           <input type="number" step="50" defaultValue="700" min="0" max="1200" onChange={e => handleSizeChange(e, "x")} className="header__canvas--size"/>

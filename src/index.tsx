@@ -11,12 +11,13 @@ import Footer from './components/molecules/Footer';
 
 const App: React.FC = () => {
   const [canvasSize, setCanvasSize] = useState<any>({ width: '700px', height: '700px'})
+  const [fineName, setFileName] = useState<any>('untitled')
 
   return(
     <>
-      <Header canvasSize={canvasSize} setCanvasSize={setCanvasSize}></Header>
+      <Header canvasSize={canvasSize} setCanvasSize={setCanvasSize} setFileName={setFileName}></Header>
       <div className="container">
-        <EditNav></EditNav>
+        <EditNav fileName={fineName}></EditNav>
         <Canvas canvasSize={canvasSize}></Canvas>
       </div>
       <Footer></Footer>

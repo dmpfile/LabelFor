@@ -12,6 +12,29 @@
     color: $white;
     letter-spacing: 4px;
   }
+  &__filename {
+    display: inline;
+    position: absolute;
+    top: 1.5%;
+    right: 500px;
+    border: 3px solid $white;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    > span {
+      color: $white;
+    }
+    input {
+      color: $white;
+      background: none;
+      font-size: 18px;
+      padding: 0 0 5px 0px;
+      margin: 0 10px;
+      outline: none;
+      width: 150px;
+      text-align: center;
+    }
+  }
   &__canvas {
     display: inline;
     position: absolute;

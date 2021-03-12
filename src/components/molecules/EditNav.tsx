@@ -5,7 +5,11 @@ import { ReactComponent as Image} from '../../assets/image.svg';
 import { ReactComponent as Printer} from '../../assets/printer.svg';
 import html2canvas from 'html2canvas';
 
-const EditNav: React.FC = () => {
+type Props = {
+  fileName: any
+}
+
+const EditNav: React.FC<Props> = (props: Props) => {
   const changeCursor = (e: React.MouseEvent<HTMLElement>) => {
     const type = e.currentTarget.dataset.item;
     document.body.style.cursor = type === 'text' ? 'text': '';
@@ -15,7 +19,7 @@ const EditNav: React.FC = () => {
     html2canvas(document.querySelector('.canvas__inner') as HTMLElement).then(canvas => {
       const a = document.createElement('a')
       a.href = canvas.toDataURL("image/png")
-      a.download = "canvas.png"
+      a.download = `${props.fileName}.png`
       a.click()
       a.remove()
     })
